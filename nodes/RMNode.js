@@ -52,6 +52,16 @@
                 node.status({fill:"green",shape:"dot",text:"Temperature Reading Received"});
                 node.send(msg);
             });
+            _device.on("sensor", (data) => {
+                if (typeof (msg.payload) != "object") { msg.payload = {}; }
+                if (!isNaN(data.temperature))
+                    msg.payload.temperature = data.temperature;
+                if (!isNaN(data.humidity))
+                    msg.payload.humidity = data.humidity;
+                node.status({fill:"green",shape:"dot",text:"Sensor Reading Received"});
+                node.send(msg);
+            });
+
             _device.on("data", (temp) => {
                 if (typeof (msg.payload) != "object") { msg.payload = {}; }
                 msg.payload.data = temp;
@@ -197,6 +207,12 @@
                         _device.checkTemperature();
                         node.status({fill:"green",shape:"dot",text:"Temperature Request Sent"});
                         break;
+                    case "sensor":
+                        node.status({fill:"green",shape:"ring",text:"Checking Sensor"});
+                        _device.checkSensor();
+                        node.status({fill:"green",shape:"dot",text:"Sensor Request Sent"});
+                        break;
+
                 }
             });
         });

@@ -13,6 +13,7 @@
       "option_action_learn": "Обучение",
       "option_action_send": "Управление",
       "option_action_temperature": "Температура",
+      "option_action_sensor": "Sensor",
       "remote": "Пульт",
       "button": "Кнопка",
       "inputLabels": "parameter for input",

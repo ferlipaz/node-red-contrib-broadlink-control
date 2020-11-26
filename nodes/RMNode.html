@@ -46,7 +46,7 @@
         defaults: {
             name: { value: "" },
             device: { type: "rmdevice", required: false },
-            action: { value: "temperature" },
+            action: { value: "sensor" },
             remote: { value: "" },
             button: { value: "" },
             //repeat: { value: 0 },
@@ -126,6 +126,7 @@
             <option value="learn" data-i18n="rm.label.option_action_learn"></option>
             <option value="send" data-i18n="rm.label.option_action_send"></option>
             <option value="temperature" data-i18n="rm.label.option_action_temperature"></option>
+            <option value="sensor" data-i18n="rm.label.option_action_sensor"></option>
         </select>
     </div>
     <div class="form-row rmaction" id="rmaction-send">
@@ -157,6 +158,8 @@
 <script type="text/x-red" data-help-name="RM" data-lang="ru-RU">
     <p><span >Узел, позволяющий управлять вашим Broadlink RM.</span></p>
     <p><span >Выбирете действие, либо установите через</span> <code>msg.payload.action</code></p>
+    <h3><span >Sensor</span></h3>
+    <pre>msg.payload.action = 'sensor';</pre>
     <h3><span >Температура</span></h3>
     <pre>msg.payload.action = 'temperature';</pre>
     <h3><span >Обучение</span></h3>
@@ -174,6 +177,8 @@ msg.payload.button = 202;
 <script type="text/x-red" data-help-name="RM" data-lang="en-US">
     <p><span >A node that allows you to manage your Broadlink RM.</span></p>
     <p><span >Choose an action, or set it through</span> <code>msg.payload.action</code></p>
+    <h3><span >Sensor</span></h3>
+    <pre>msg.payload.action = 'sensor';</pre>
     <h3><span >Temperature</span></h3>
     <pre>msg.payload.action = 'temperature';</pre>
     <h3><span >Learning</span></h3>

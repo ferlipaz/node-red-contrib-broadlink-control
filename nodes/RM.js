@@ -17,6 +17,13 @@ class RM extends Device {
                     var temp = (payload[0x4] * 10 + payload[0x5]) / 10.0;
                     this.emit("temperature", temp);
                     break;
+                case 0x24:
+                    console.log("\x1b[31m\x1b[31mBroadlink:\x1b[0m\x1b[0m Sensor Data Received - Type 0x24 Converting and sending.");
+                    var sensor = {};
+                    sensor.temperature = payload[0x04] + payload[0x05] / 100.0;
+                    sensor.humidity = payload[0x06] + payload[0x07] / 100.0
+                    this.emit("sensor", sensor);
+                    break;
                 case 2: //0x02
                     console.log("\x1b[31m\x1b[31mBroadlink:\x1b[0m\x1b[0m Success Data Received - Type 2 Data Successful.");
                     break;
@@ -69,6 +76,17 @@ class RM extends Device {
         this.sendPacket(0x6a, packet);
     }
 
+    checkSensor() {
+        var packet = Buffer.alloc(16, 0);
+        if (constants.RM4.indexOf(this.devType) > -1) {
+            packet[0] = 4;
+            packet[1] = 0;
+            packet[2] = 0x24;
+        } else {
+            packet[0] = 1;
+        }
+        this.sendPacket(0x6a, packet);
+    }
 
     enterLearning() {
         var packet = Buffer.alloc(16, 0);

@@ -13,6 +13,7 @@
       "option_action_learn": "Learn",
       "option_action_send": "Send",
       "option_action_temperature": "Temperature",
+      "option_action_sensor": "Sensor",
       "remote": "Remote",
       "button": "Button",
       "inputLabels": "parameter for input",
